@@ -22,7 +22,7 @@ class PrimeList:
             return [n]
 
         for p in self.primes:
-            while n % p == 0
+            while n % p == 0:
                 n /= p
                 devisors.append(p)
 
