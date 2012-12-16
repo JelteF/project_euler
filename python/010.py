@@ -1,10 +1,11 @@
 from utils.my_math import PrimeList
+import time
 
-prime_list = PrimeList()
-primes = prime_list.primes
+start = time.time()
 
+pl = PrimeList()
+primes = pl.primes_up_to(2000000)
 
-while primes[-1] < 2000000:
-    prime_list.find_next_prime()
+print time.time() - start
 
-print sum(primes[0:-1])
+print sum(primes)
