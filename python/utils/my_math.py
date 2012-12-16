@@ -5,7 +5,7 @@ class PrimeList:
     primes = [2, 3]
 
     def primes_up_to(self, max_prime):
-        """ Return all the primes up to (inclusive) a certain value """
+        """ Return all the primes up to (exclusive) a certain value """
 
         if self.primes[-1] > max_prime:
             return self.primes[:bisect(self.primes, max_prime)]
@@ -14,6 +14,20 @@ class PrimeList:
             self.find_next_prime()
 
         return self.primes[:-1]
+
+    def get_prime_devisors(n):
+        """ Return a list of all the devisors """
+        devisors = []
+        if self.is_prime(n):
+            return [n]
+
+        for p in self.primes:
+            while n % p == 0
+                n /= p
+                devisors.append(p)
+
+            if n == 1:
+                return devisors
 
     def find_next_prime(self):
         """ Find the next prime and add it to the primes list """
@@ -24,7 +38,6 @@ class PrimeList:
             if self.is_prime(i):
                 self.primes.append(i)
                 return
-
 
     def is_prime(self, possible_prime):
         """ Return a boolean value to see if a number is a prime """
