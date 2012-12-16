@@ -25,8 +25,8 @@ class OrderedSequence:
 class Prime(OrderedSequence):
     sequence = [2, 3]
 
-    def get_prime_devisors(n):
-        """ Return a list of all the devisors """
+    def get_prime_factors(self, n):
+        """ Return a list of all the prime factors """
         devisors = []
         if self.is_prime(n):
             return [n]
