@@ -27,17 +27,17 @@ class Prime(OrderedSequence):
 
     def get_prime_factors(self, n):
         """ Return a list of all the prime factors """
-        devisors = []
+        factors = []
         if self.is_prime(n):
             return [n]
 
         for p in self.sequence:
             while n % p == 0:
                 n /= p
-                devisors.append(p)
+                factors.append(p)
 
             if n == 1:
-                return devisors
+                return factors
 
     def find_next(self):
         """ Find the next prime and add it to the primes list """
