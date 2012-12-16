@@ -1,6 +1,5 @@
-import time
 from utils.my_math import Prime
-from operator import mul
+from utils.main import main
 
 """
 2520 is the smallest number that can be divided by each of the numbers from 1
@@ -28,7 +27,4 @@ def divisible_by_all_lower(max_divisor):
     return smallest
 
 if __name__ == '__main__':
-    start = time.time()
-    answer = divisible_by_all_lower(21)
-    print time.time() - start
-    print answer
+    main(divisible_by_all_lower, 21)
