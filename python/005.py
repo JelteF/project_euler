@@ -1,23 +1,22 @@
-def evenly_devidable1(min, max):
-    output = 1
-    for i in range(max, min - 1, -1):
-        print i
-        if output % i != 0:
-            output *= i
-            print output
-    print output
+import time
+from utils.my_math import PrimeList
+from operator import mul
 
+def divisible_by_all_lower(max_divisor):
+    smallest = 1
+    pl = PrimeList()
+    prime_divisors = pl.primes_up_to(max_divisor + 1)
 
-def evenly_devidable2(min, max):
-    output = 0
-    while True:
-        output += 20
-        for i in range(max, min - 1, -1):
-            if output % i != 0:
-                break
-        else:
-            print output
-            break
+    for p in prime_divisors:
+        temp = p
+        while temp <= max_divisor:
+            temp *= p
+            smallest *= p
 
-evenly_devidable1(1, 20)
-evenly_devidable2(1, 20)
+    return smallest
+
+if __name__ == '__main__':
+    start = time.time()
+    answer = divisible_by_all_lower(20)
+    print time.time() - start
+    print answer
