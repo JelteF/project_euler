@@ -1,5 +1,5 @@
 import time
-from utils.my_math import PrimeList
+from utils.my_math import Prime
 from operator import mul
 
 """
@@ -16,7 +16,7 @@ def divisible_by_all_lower(max_divisor):
         max_divisor
     """
     smallest = 1
-    pl = PrimeList()
+    pl = Prime()
     prime_divisors = pl.primes_up_to(max_divisor)
 
     for p in prime_divisors:

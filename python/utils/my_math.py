@@ -1,7 +1,7 @@
 from math import sqrt
 from bisect import bisect
 
-class PrimeList:
+class Prime:
     primes = [2, 3]
 
     def primes_up_to(self, max_prime):
@@ -60,3 +60,5 @@ class PrimeList:
             if p > sqrt(possible_prime):
                 return True
 
+
+class Fibonaci
