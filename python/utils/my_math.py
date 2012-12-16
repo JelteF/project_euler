@@ -70,3 +70,10 @@ class Prime(OrderedSequence):
             if p > sqrt(possible_prime):
                 return True
 
+
+class Fibonacci(OrderedSequence):
+    sequence = [1, 1]
+
+    def find_next(self):
+        self.sequence.append(self.sequence[-2] + self.sequence[-1])
+
