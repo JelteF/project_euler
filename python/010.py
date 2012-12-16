@@ -1,11 +1,11 @@
 from utils.my_math import Prime
-import time
+from time import time
 
-start = time.time()
+start = time()
 
 pl = Prime()
-primes = pl.primes_up_to(2000000)
+primes = pl.up_to(2000000)
 
-print time.time() - start
+print time() - start
 
 print sum(primes)
