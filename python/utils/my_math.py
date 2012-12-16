@@ -17,7 +17,6 @@ class PrimeList:
 
         # Calculate new primes to do sufficient checking
         while sqrt(possible_prime) > self.primes[-1]:
-            print 'blaaa'
             self.find_next_prime()
 
         # Check to see if it could alread be in the list
