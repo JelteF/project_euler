@@ -1,25 +1,10 @@
-def find_next_prime(primeList):
-    i = primeList[len(primeList) - 1]
-    while True:
-        i += 1
-        for p in primeList:
-            if i % p == 0:
-                break
-        else:
-            primeList.append(i)
-            return
+from utils.my_math import Prime
+from utils.main import main
+
+def largest_primefactor(n):
+    ps = Prime()
+    return ps.get_prime_factors(n)[-1]
 
 
-def largest_primefactor_of(maximum):
-    primes = [2]
-    devider = "No primefactor found"
-    while primes[-1] <= maximum:
-        if maximum % primes[-1] == 0:
-            devider = primes[-1]
-            maximum /= primes[-1]
-        else:
-            find_next_prime(primes)
-    print devider
-
-
-largest_primefactor_of(600851475143)
+if __name__ == '__main__':
+    main(largest_primefactor, 600851475143)
