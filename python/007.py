@@ -1,16 +1,10 @@
-def find_next_prime(primeList):
-    i = primeList[len(primeList) - 1]
-    while True:
-        i += 2
-        for p in primeList:
-            if i % p == 0:
-                break
-        else:
-            primeList.append(i)
-            return
+from utils.my_math import Prime
+from utils.main import main
+
+def find_prime(n):
+    ps = Prime()
+    return ps.up_to_element(n)[-1]
 
 
-primes = [2, 3]
-for a in range(2, 10002):
-    find_next_prime(primes)
-print primes[10000]
+if __name__ == '__main__':
+    main(find_prime, 10001)
