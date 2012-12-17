@@ -17,9 +17,11 @@ class OrderedSequence:
 
         return self.sequence[:-1]
 
+    def up_to_element(self, element):
+        while len(self.sequence) < element:
+            self.find_next()
 
-    def find_next(self):
-        sequence.append(0)
+        return self.sequence[:element]
 
 
 class Prime(OrderedSequence):
@@ -56,7 +58,7 @@ class Prime(OrderedSequence):
         while sqrt(possible_prime) > self.sequence[-1]:
             self.find_next()
 
-        # Check to see if it could alread be in the list
+        # Check to see if it could already be in the list
         if possible_prime <= self.sequence[-1]:
             if possible_prime in self.sequence:
                 return True
