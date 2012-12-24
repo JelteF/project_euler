@@ -6,8 +6,6 @@ def product(numbers):
     return reduce(mul, numbers)
 
 class OrderedSequence:
-    sequence = []
-
     def up_to(self, max_num):
         """ Return all the numbers in the sequence up to (exclusive) a certain
             value
@@ -28,8 +26,8 @@ class OrderedSequence:
 
 
 class Prime(OrderedSequence):
-    sequence = [2, 3]
-
+    def __init__(self):
+        self.sequence = [2, 3]
     def get_prime_factors(self, n):
         """ Return a list of all the prime factors """
         factors = []
@@ -77,7 +75,8 @@ class Prime(OrderedSequence):
 
 
 class Fibonacci(OrderedSequence):
-    sequence = [1, 1]
+    def __init__(self):
+        self.sequence = [1, 1]
 
     def find_next(self):
         self.sequence.append(self.sequence[-2] + self.sequence[-1])
