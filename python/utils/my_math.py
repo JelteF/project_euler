@@ -31,16 +31,20 @@ class Prime(OrderedSequence):
     def get_prime_factors(self, n):
         """ Return a list of all the prime factors """
         factors = []
-        if self.is_prime(n):
-            return [n]
 
         for p in self.sequence:
             while n % p == 0:
                 n /= p
                 factors.append(p)
 
-            if n == 1:
-                return factors
+        self.find_next()
+
+        while self.sequence[-1] <= n:
+            while n % self.sequence[-1] == 0:
+                n /= self.sequence[-1]
+                factors.append(self.sequence[-1])
+
+        return factors
 
     def find_next(self):
         """ Find the next prime and add it to the primes list """
