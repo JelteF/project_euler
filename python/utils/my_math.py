@@ -85,3 +85,10 @@ class Fibonacci(OrderedSequence):
     def find_next(self):
         self.sequence.append(self.sequence[-2] + self.sequence[-1])
 
+
+class Triangle(OrderedSequence):
+    def __init__(self):
+        self.sequence = [1]
+
+    def find_next(self):
+        self.sequence.append(self.sequence[-1] + len(self.sequence) + 1)
