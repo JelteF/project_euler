@@ -1,44 +1,74 @@
-def generate_size(start, size, fromm, tto, numbers):
-    for a in range(fromm, tto):
-        numbers[start + a] = size + numbers[a]
+from utils.main import main
+
+"""
+If the numbers 1 to 5 are written out in words: one, two, three, four, five,
+then there are 3 + 3 + 5 + 4 + 4 = 19 letters used in total.
+
+If all the numbers from 1 to 1000 (one thousand) inclusive were written out in
+words, how many letters would be used?
 
 
-size = 1001
-numbers = [0]*size
-numbers[0] = 0
-numbers[1] = len("one")
-numbers[2] = len("two")
-numbers[3] = len("three")
-numbers[4] = len("four")
-numbers[5] = len("five")
-numbers[6] = len("six")
-numbers[7] = len("seven")
-numbers[8] = len("eight")
-numbers[9] = len("nine")
-numbers[10] = len("ten")
-numbers[11] = len("eleven")
-numbers[12] = len("twelve")
-numbers[13] = len("thirteen")
-for a in range(4, 10):
-    numbers[10 + a] = 4 + numbers[a]
-numbers[15] = len("fifteen")
-numbers[18] = len("eighteen")
-generate_size(20, len("twenty"), 0, 10, numbers)
-generate_size(30, len("thirty"), 0, 10, numbers)
-generate_size(40, len("forty"), 0, 10, numbers)
-generate_size(50, len("fifty"), 0, 10, numbers)
-for a in range(60, 100, 10):
-    generate_size(a, numbers[a/10] + len("ty"), 0, 10, numbers)
-generate_size(80, len("eighty"), 0, 10, numbers)
-for a in range(100, 1000, 100):
-    numbers[a] = numbers[a/100] + len("hundred")
-    generate_size(a, numbers[a/100] + len("hundred") + len("and"), 1, 100, numbers)
-numbers[1000] = len("onethousand")
+NOTE: Do not count spaces or hyphens. For example, 342 (three hundred and
+forty-two) contains 23 letters and 115 (one hundred and fifteen) contains 20
+letters. The use of "and" when writing out numbers is in compliance with
+British usage.
+"""
 
-total = 0
-counter = 0
-for a in numbers:
-    print counter, a
-    total += a
-    counter += 1
-print total
+def generate_written_out_numbers(start, prepend, append, num_range, numbers):
+    for i in num_range:
+        numbers[start + i] = prepend + numbers[i] + append
+
+
+def get_written_out_numbers():
+    numbers = ['']*1001
+    numbers[0] = 'zero'
+    numbers[1] = 'one'
+    numbers[2] = 'two'
+    numbers[3] = 'three'
+    numbers[4] = 'four'
+    numbers[5] = 'five'
+    numbers[6] = 'six'
+    numbers[7] = 'seven'
+    numbers[8] = 'eight'
+    numbers[9] = 'nine'
+    numbers[10] = 'ten'
+    numbers[11] = 'eleven'
+    numbers[12] = 'twelve'
+    numbers[13] = 'thirteen'
+
+    generate_written_out_numbers(10, '', 'teen', range(4, 10), numbers)
+
+    numbers[15] = 'fifteen'
+    numbers[18] = 'eighteen'
+
+    numbers[20] = 'twenty'
+    numbers[30] = 'thirty'
+    numbers[40] = 'forty'
+    numbers[50] = 'fifty'
+
+    for i in range(60, 100, 10):
+        numbers[i] = numbers[i/10] + 'ty'
+
+    numbers[80] = 'eighty'
+
+    for i in range(20, 100, 10):
+        generate_written_out_numbers(i, numbers[i], '', range(1, 10), numbers)
+
+    for i in range(100, 1000, 100):
+        numbers[i] = numbers[i/100] + 'hundred'
+        generate_written_out_numbers(i, numbers[i] + 'and', '', range(1, 100),
+                                     numbers)
+
+    numbers[1000] = 'onethousand'
+
+    return numbers
+
+
+def length_of_written_out_numbers(start, end):
+    numbers = get_written_out_numbers()
+    return sum(map(len, numbers[start:end]))
+
+
+
+if __name__ == '__main__':
+    main(length_of_written_out_numbers, 1, 1001)
