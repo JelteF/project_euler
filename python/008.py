@@ -1,6 +1,6 @@
 from utils.main import main
 from itertools import tee, izip, islice
-from operator import mul
+from utils.my_math import product
 import re
 
 """
@@ -38,16 +38,15 @@ def quintuplewise(iterable):
 
 
 def max_product_from_file(filename):
-    product = 0
+    prod = 0
     f = open(filename, 'r')
 
     number = map(int, re.sub(r'\D', '', f.read()))
 
     for group in quintuplewise(number):
-        print group
-        if product < reduce(mul, group):
-            product = reduce(mul, group)
-    return product
+        if prod < product(group):
+            prod = product(group)
+    return prod
 
 
 if __name__ == '__main__':
