@@ -1,6 +1,9 @@
 from math import sqrt
 from bisect import bisect
+from operator import mul
 
+def product(numbers):
+    return reduce(mul, numbers)
 
 class OrderedSequence:
     sequence = []
