@@ -50,4 +50,4 @@ def max_product_from_file(filename):
 
 
 if __name__ == '__main__':
-    main(max_product_from_file, './008_data.txt')
+    main(max_product_from_file, './pe008_data.txt')

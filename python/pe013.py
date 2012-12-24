@@ -16,4 +16,4 @@ def get_first_digits_of_sum(amount, filename):
 
 
 if __name__ == '__main__':
-    main(get_first_digits_of_sum, 10, './013_data.txt')
+    main(get_first_digits_of_sum, 10, './pe013_data.txt')
