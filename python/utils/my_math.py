@@ -48,6 +48,30 @@ class Prime(OrderedSequence):
 
         return factors
 
+    def get_prime_factor_frequency(self, n):
+        factors = []
+        frequencies = []
+
+        for p in self.sequence:
+            if n % p == 0:
+                factors.append(p)
+                frequencies.append(0)
+                while n % p == 0:
+                    n /= p
+                    frequencies[-1] += 1
+
+        self.find_next()
+
+        while self.sequence[-1] <= n:
+            if n % self.sequence[-1] == 0:
+                factors.append(self.sequence[-1])
+                frequencies.append(0)
+                while n % self.sequence[-1] == 0:
+                    n /= self.sequence[-1]
+                    frequencies[-1] += 1
+
+        return factors, frequencies
+
     def get_all_divisors(self, n):
         """ Return a list of all (not only prime) divisors """
         prime_factors = self.get_prime_factors(n)
