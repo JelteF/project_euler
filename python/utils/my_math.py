@@ -1,5 +1,6 @@
 from math import sqrt
 from bisect import bisect
+from itertools import combinations
 from operator import mul
 
 def product(numbers):
@@ -28,6 +29,7 @@ class OrderedSequence:
 class Prime(OrderedSequence):
     def __init__(self):
         self.sequence = [2, 3]
+
     def get_prime_factors(self, n):
         """ Return a list of all the prime factors """
         factors = []
@@ -45,6 +47,16 @@ class Prime(OrderedSequence):
                 factors.append(self.sequence[-1])
 
         return factors
+
+    def get_all_divisors(self, n):
+        """ Return a list of all (not only prime) divisors """
+        prime_factors = self.get_prime_factors(n)
+        combis = []
+
+        for i in xrange(1, len(prime_factors) + 1):
+            combis.extend(list(set(combinations(prime_factors, i))))
+
+        return map(product, combis)
 
     def find_next(self):
         """ Find the next prime and add it to the primes list """
