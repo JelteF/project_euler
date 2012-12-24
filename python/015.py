@@ -1,24 +1,21 @@
-import sys
-def choose_next(x, y, size):
-    if x == size:
-        return 1
-    if y == size:
-        return 1
-    return choose_next(x + 1, y, size) + choose_next(x, y + 1, size)
+from utils.main import main
 
-
-start = 1
-a = 1
-size = 21
 """
-size = start
-while start < size:
-    print choose_next(0, 0, start)
-    start += 1
-"""
-grid = [[1]*size for x in xrange(size)]
-for x in range(1, size):
-    for y in range(1, size):
-        grid[x][y] = grid[x-1][y] + grid[x][y-1]
+Starting in the top left corner of a 22 grid, there are 6 routes (without
+backtracking) to the bottom right corner.
 
-print grid[size - 1][size - 1]
+
+How many routes are there through a 2020 grid?
+"""
+
+def find_option_through_grid(size):
+    grid = [[1]*size for x in xrange(size)]
+    for x in range(1, size):
+        for y in range(1, size):
+            grid[x][y] = grid[x-1][y] + grid[x][y-1]
+
+    return grid[size - 1][size - 1]
+
+
+if __name__ == '__main__':
+    main(find_option_through_grid, 21)
