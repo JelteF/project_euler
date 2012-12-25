@@ -15,7 +15,7 @@ Evaluate the sum of all the amicable numbers under 10000.
 """
 
 def d(n, pl):
-    return sum(pl.get_all_divisors(n)[:-1])
+    return sum(pl.get_proper_divisors(n))
 
 
 def sum_of_amicable_numbers(n):
