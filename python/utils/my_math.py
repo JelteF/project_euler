@@ -75,7 +75,7 @@ class Prime(OrderedSequence):
     def get_all_divisors(self, n):
         """ Return a list of all (not only prime) divisors """
         prime_factors = self.get_prime_factors(n)
-        combis = []
+        combis = [(1,)]
 
         for i in xrange(1, len(prime_factors) + 1):
             combis.extend(list(set(combinations(prime_factors, i))))
