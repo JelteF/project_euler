@@ -82,6 +82,9 @@ class Prime(OrderedSequence):
 
         return map(product, combis)
 
+    def get_proper_divisors(self, n):
+        return self.get_all_divisors(n)[:-1]
+
     def find_next(self):
         """ Find the next prime and add it to the primes list """
 
