@@ -39,7 +39,6 @@ class Prime(OrderedSequence):
                 n /= p
                 factors.append(p)
 
-        self.find_next()
 
         while self.sequence[-1] <= n:
             while n % self.sequence[-1] == 0:
@@ -60,8 +59,6 @@ class Prime(OrderedSequence):
                 while n % p == 0:
                     n /= p
                     frequencies[-1] += 1
-
-        self.find_next()
 
         while self.sequence[-1] <= n:
             if n % self.sequence[-1] == 0:
