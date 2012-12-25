@@ -45,6 +45,7 @@ class Prime(OrderedSequence):
             while n % self.sequence[-1] == 0:
                 n /= self.sequence[-1]
                 factors.append(self.sequence[-1])
+            self.find_next()
 
         return factors
 
@@ -69,6 +70,7 @@ class Prime(OrderedSequence):
                 while n % self.sequence[-1] == 0:
                     n /= self.sequence[-1]
                     frequencies[-1] += 1
+            self.find_next()
 
         return factors, frequencies
 
