@@ -94,30 +94,37 @@ class Prime(OrderedSequence):
                 self.sequence.append(i)
                 return
 
-    def is_prime(self, possible_prime):
+    def is_prime(self, n):
         """ Return a boolean value to see if a number is a prime """
-        if possible_prime > 5:
-            m = possible_prime % 30
+        if n < 19:
+            return n in [2, 3, 5, 7, 11, 13, 17]
+
+        if n > 5:
+            m = n % 30
             if m != 1 and m != 7 and m != 11 and m != 13 and m != 17 and \
                     m != 19 and m != 23 and m != 29:
                 return False
 
+        if n < 721801:
+            return pow(2, n-1, n)==1 and\
+                    pow(3, n-1, n)==1 and pow(5, n-1, n)==1
+
         # Calculate new primes to do sufficient checking
-        while sqrt(possible_prime) > self.sequence[-1]:
+        while sqrt(n) > self.sequence[-1]:
             self.find_next()
 
         # Check to see if it could already be in the list
-        if possible_prime <= self.sequence[-1]:
-            if possible_prime in self.sequence:
+        if n <= self.sequence[-1]:
+            if n in self.sequence:
                 return True
             return False
 
         # Check against existing primes
         for p in self.sequence:
-            if possible_prime % p == 0:
+            if n % p == 0:
                 return False
 
-            if p > sqrt(possible_prime):
+            if p > sqrt(n):
                 return True
 
 
