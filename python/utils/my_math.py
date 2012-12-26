@@ -96,6 +96,11 @@ class Prime(OrderedSequence):
 
     def is_prime(self, possible_prime):
         """ Return a boolean value to see if a number is a prime """
+        if possible_prime > 5:
+            m = possible_prime % 30
+            if m != 1 and m != 7 and m != 11 and m != 13 and m != 17 and \
+                    m != 19 and m != 23 and m != 29:
+                return False
 
         # Calculate new primes to do sufficient checking
         while sqrt(possible_prime) > self.sequence[-1]:
